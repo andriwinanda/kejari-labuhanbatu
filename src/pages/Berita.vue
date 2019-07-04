@@ -2,173 +2,110 @@
   <div class="section columns is-multiline">
     <div class="column is-8">
       <div class="isi-berita">
-        <h1 class="title is-3">Pembukaan Acara Rapat Kerja Kejaksaan RI Tahun 2018</h1>
+        <h1 class="title is-3">{{content.title}}</h1>
         <div>
-          <small>Oleh : Kejati Sumut</small>
+          <small>Oleh : {{content.user? content.user: 'admin'}} </small>
           <span class="is-pulled-right">
-            <small>Diupload : 28/6/2019</small>
+            <small>Diupload : {{content.dates}}</small>
           </span>
         </div>
         <hr />
-        <img src="https://strategi.id/wp-content/uploads/2018/11/rakernas1.jpg" alt />
+        <img :src="gallery.image" alt />
         <br />
-        <p class="has-text-justified">
-          Selasa 27 November 2018, Kejaksaan Republik Indonesia menggelar acara Rapat Kerja di Hotel Grand Inna
-          Bali Beach. Rapat Kerja Kejaksaan RI tahun 2018 diawali dengan laporan ketua panitia Raker Kejaksaan
-          RI Tahun 2018 Jaksa Agung Muda Perdata dan Tata Usaha Negara Luke Larasati Agustina, melaporkan sumber
-          dana pelaksaan raker yang berasal dari DIPA Kejaksaan RI Tahun Anggaran 2018, dan menyampaikan
-          rangkaian kegiatan raker yang menghadirkan pembicara dari berbagai elemen seperti dari Komisi
-          Yudisial, Duta Besar serta pemateri lainnya. Rakernas juga sekaligus sebagai evaluasi kinerja
-          Kejaksaan RI di seluruh Indonesia. Acara ini dihadiri oleh Jaksa Agung RI HM Prasetyo, Wakil Jaksa
-          Agung RI Arminsyah, Para Jaksa Agung Muda, Kabandiklat, Para Kajati, Para Asisten, dan Pengurus Ikatan
-          Adhyaksa Dharmakarini seluruh Indonesia serta Peserta Rapat Kerja Kejaksaan RI Tahun 2018.
-        </p>
-        <p class="has-text-justified">
-          Rapat Kerja Kejaksaan RI Tahun 2018 ini dibuka secara resmi oleh Jaksa Agung RI HM Prasetyo dan ditandai
-          dengan pemukulan gong. Dalam arahannya HM Prasetyo menyambut baik dilaksanakannya acara
-          Rakernas Kejaksaan RI 2018 yang mengusung tema KUKUHKAN SEMANGAT BARU, BANGUN PERSEPSI DAN CITRA DIRI,
-          UKIR PRESTASI UNTUK NEGERI, untuk menyamakan persepsi dalam upaya penegakan hukum di negeri ini
-        </p>
-        <p class="has-text-justified">
-          Jaksa Agung HM Prasetyo meminta kepada seluruh peserta yang mengikuti Raker agar memiliki komitmen dalam
-          memperbaiki citra diri dan mengukir prestasi, berkontribusi dan berdikasi bagi bangsa dan negara
-          demi reformasi birokrasi dan peningkatan pelayanan Kejaksaan yang terbuka dan transparan. Semoga dengan
-          Rapat Kerja Kejaksaan RI Tahun 2018 ini seluruh peserta semakin bersemangat dalam
-          menjalankan tugas sebagai penegak hukum. Dan bekerja dengan kesungguhan, keuletan, dan berintegritas.
-        </p>
+        <!-- Text Content -->
+        <p class="has-text-justified" v-html="content.text"/>
+       
         <br />
-        <small>Sumber : Kejati Sumut</small>
+        <!-- <small>Sumber : Kejati Sumut</small> -->
       </div>
     </div>
     <div class="column is-4 berita-lain" style>
       <p class="title is-5">Berita Terpopuler</p>
       <hr />
-
-      <article class="media">
+      <!-- Media -->
+      <article v-for="(artikel) in populer" :key="artikel.id"  class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" />
+            <img :src="artikel.image" />
           </p>
         </figure>
         <div class="media-content">
           <div class="content">
-            <p class="has-text-justified">
-              <strong>Barbara Middleton</strong>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque...
+            <p class="">
+              <strong>{{artikel.title}}</strong>
               <br />
+              <span v-html="(artikel.text).substring(0,100)+'...'"></span>
               <small>
-                <a>Selengkapnya »</a>
+                <a class="has-text-link"  @click="artikel_detail(artikel.id)">Baca Selengkapnya »</a>
               </small>
             </p>
           </div>
         </div>
       </article>
 
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" />
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p class="has-text-justified">
-              <strong>Barbara Middleton</strong>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque...
-              <br />
-              <small>
-                <a>Selengkapnya »</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" />
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p class="has-text-justified">
-              <strong>Barbara Middleton</strong>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque...
-              <br />
-              <small>
-                <a>Selengkapnya »</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" />
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p class="has-text-justified">
-              <strong>Barbara Middleton</strong>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque...
-              <br />
-              <small>
-                <a>Selengkapnya »</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" />
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p class="has-text-justified">
-              <strong>Barbara Middleton</strong>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque...
-              <br />
-              <small>
-                <a>Selengkapnya »</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img src="https://bulma.io/images/placeholders/128x128.png" />
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p class="has-text-justified">
-              <strong>Barbara Middleton</strong>
-              <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque...
-              <br />
-              <small>
-                <a>Selengkapnya »</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </article>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      content: {},
+      gallery: [],
+      populer: []
+    };
+  },
+  methods:{
+    artikel_detail(id) {
+      this.$router.push(id)
+      this.get_article();
+    },
+    get_article(){
+      // Full Artickel
+    let id = this.$route.params.id;
+    this.axios
+      .get(
+        "http://kejari.wamenak.com/index.php/article/get_article/" + id,
+        // {
+      )
+      .then(res => {
+        // this.artikel = res.data.content;
+        this.content= res.data.content[0]
+        this.gallery= res.data.gallery[0]
+        console.log(res.data.content[0].title)
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
+  },
+  mounted() {
+    // Get Full Artcle
+    this.get_article()
+
+    // Berita Terpopuler
+    let body = {
+      category_id: "",
+      language: "",
+      limit: "3",
+      start: ""
+    };
+    this.axios
+      .post("http://kejari.wamenak.com/index.php/article/get_article_list",body)
+      .then(res => {
+        this.populer = res.data.content;
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
+</script>
+
 <style>
-.section{
-  padding-top: 2rem
+.section {
+  padding-top: 2rem;
 }
 .berita-lain {
   border-left: 1px solid gainsboro;
@@ -196,6 +133,9 @@
 
 p {
   color: black;
+}
+a{
+  color: #3273dc
 }
 </style>
 

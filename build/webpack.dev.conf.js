@@ -28,6 +28,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
       ],
     },
+    proxy: {
+      '/api': { // from '/api'
+        target: {
+          host: 'localhost', // we are in docker, the host is in another container, so, we shouldnt put 'localhost' here
+          protocol: 'http',
+          port: 3000
+
+        },
+        pathRewrite: { '^/api': '' } // to '/'
+      }
+    },
+
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
@@ -85,8 +97,8 @@ module.exports = new Promise((resolve, reject) => {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
         onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+          ? utils.createNotifierCallback()
+          : undefined
       }))
 
       resolve(devWebpackConfig)

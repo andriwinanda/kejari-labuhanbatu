@@ -22,6 +22,7 @@
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
+            @click="showNav = !showNav"
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -29,10 +30,9 @@
           </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
           <div class="navbar-start">
             <router-link class="navbar-item" to="/">Beranda</router-link>
-            <router-link class="navbar-item" to="/berita">Berita</router-link>
 
           </div>
         </div>
@@ -40,6 +40,16 @@
     </section>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      showNav: false
+    }
+  }
+}
+</script>
+
 <style>
 .hero-body {
   padding: 1.5rem;

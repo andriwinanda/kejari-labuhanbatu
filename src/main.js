@@ -11,11 +11,16 @@ Vue.use(Buefy)
 
 Object.defineProperties(Vue.prototype, {
   axios: {
-    get () {
+    get() {
       return axios
     }
-  }
+  },
 })
+// axios.defaults.baseURL = 'http://kejari.wamenak.com';
+// axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers.get['Content-Type'] ='application/json;charset=utf-8';
+// axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 Vue.config.productionTip = false
 

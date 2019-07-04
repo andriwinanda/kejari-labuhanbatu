@@ -7,32 +7,34 @@
     </section>
     <section class="section">
       <div class="container">
-        <div class="columns is-multiline">
-          <div class="column">
+        <div class="columns">
+          <div class="column is-9">
             <h4 class="title">Artikel</h4>
           </div>
-          <div class="column">
-            <b-field horizontal label="Urutkan:" class="control is-pulled-right" expanded>
-              <b-select placeholder="Urut berdasarkan">
+          <div class="column is-3">
+            <b-field horizontal label="Urutkan:" class="control">
+              <b-select placeholder="Urut berdasarkan" expanded>
                 <option value="1">Popularitas</option>
                 <option value="2">Tanggal</option>
               </b-select>
             </b-field>
           </div>
         </div>
+
         <hr style="margin-top: 0;" />
         <!-- Album Artikel -->
         <div class="columns is-multiline">
           <div v-for="(artikel) in berita" :key="artikel.id" class="column is-3">
-            <a href="berita.html">
+            <a @click="artikel_detail(artikel.id)">
               <div class="card album">
                 <div class="card-image">
-                  <img :src="artikel.image" class="image is-480x480" />
                 </div>
                 <div class="card-content">
+                  <img :src="artikel.image" class="image is-480x480" />
+                  <br/>
                   <div class="media">
                     <div class="media-content">
-                      <p class="title is-6 has-text-centered">{{artikel.title}}</p>
+                      <p class="title is-6 has-text-weight-bold">{{artikel.title}}</p>
                       <p v-html="(artikel.text).substring(0,200)+'...'"></p>
                     </div>
                   </div>
@@ -108,20 +110,29 @@ export default {
     };
   },
   mounted() {
-    let data = {
+    let body = {
       category_id: "",
       language: "",
       limit: "50",
       start: ""
     };
     this.axios
-      .post("http://kejari.wamenak.com/index.php/article/get_article_list", data)
+      .post(
+        "http://kejari.wamenak.com/index.php/article/get_article_list",
+        body
+      )
       .then(res => {
-        this.berita= res.data.content
+        this.berita = res.data.content;
+        console.log(res);
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
+  },
+  methods: {
+    artikel_detail(id) {
+      this.$router.push("/berita/" + id);
+    }
   }
 };
 </script>
