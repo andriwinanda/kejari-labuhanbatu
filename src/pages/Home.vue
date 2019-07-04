@@ -12,275 +12,28 @@
             <h4 class="title">Artikel</h4>
           </div>
           <div class="column">
-              <b-field horizontal label="Urutkan:" class="control is-pulled-right" expanded>
-                <b-select placeholder="Urut berdasarkan">
-                  <option value="1">Popularitas</option>
-                  <option value="2">Tanggal</option>
-                </b-select>
-              </b-field>
-
+            <b-field horizontal label="Urutkan:" class="control is-pulled-right" expanded>
+              <b-select placeholder="Urut berdasarkan">
+                <option value="1">Popularitas</option>
+                <option value="2">Tanggal</option>
+              </b-select>
+            </b-field>
           </div>
         </div>
-        <hr style="margin-top: 0;">
+        <hr style="margin-top: 0;" />
         <!-- Album Artikel -->
         <div class="columns is-multiline">
-          <div class="column is-3">
-            <a href="/berita">
+          <div v-for="(artikel) in berita" :key="artikel.id" class="column is-3">
+            <a href="berita.html">
               <div class="card album">
                 <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
+                  <img :src="artikel.image" class="image is-480x480" />
                 </div>
                 <div class="card-content">
                   <div class="media">
                     <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="column is-3">
-            <a href="/berita">
-              <div class="card album">
-                <div class="card-image">
-                  <img
-                    src="https://sejasa-production.s3.amazonaws.com/uploads/attachment/file/1342831/44651d4cb77f7149.jpg"
-                    alt="Placeholder image"
-                  >
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-content">
-                      <p
-                        class="title is-6 has-text-centered"
-                      >Kejari Labuhanbatu Tahan Dua Orang Tersangka Sengketa Tanah</p>
+                      <p class="title is-6 has-text-centered">{{artikel.title}}</p>
+                      <p v-html="(artikel.text).substring(0,200)+'...'"></p>
                     </div>
                   </div>
                 </div>
@@ -288,7 +41,7 @@
             </a>
           </div>
         </div>
-        <hr>
+        <hr />
         <!-- Pagination -->
         <nav class="level is-mobile">
           <!-- Left side -->
@@ -350,8 +103,25 @@ export default {
           img:
             "http://kejari-labuhanbatu.go.id/wp-content/uploads/ktz/IMG-20180724-WA0035-372z5l41uhxeyyk44n7ife.jpg"
         }
-      ]
+      ],
+      berita: []
     };
+  },
+  mounted() {
+    let data = {
+      category_id: "",
+      language: "",
+      limit: "50",
+      start: ""
+    };
+    this.axios
+      .post("http://kejari.wamenak.com/index.php/article/get_article_list", data)
+      .then(res => {
+        this.berita= res.data.content
+      })
+      .catch(err => {
+        console.log(err)
+      });
   }
 };
 </script>

@@ -3,10 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 import './assets/css/style.scss'
 import Buefy from 'buefy'
 
 Vue.use(Buefy)
+
+Object.defineProperties(Vue.prototype, {
+  axios: {
+    get () {
+      return axios
+    }
+  }
+})
 
 Vue.config.productionTip = false
 
