@@ -4,9 +4,9 @@
       <div class="hero-body">
         <div class="container">
           <img
-            src="http://kejari-labuhanbatu.go.id/wp-content/uploads/2017/04/header-RANTAU-3.png"
+            src="@/assets/img/header.png"
             alt
-          >
+          />
         </div>
       </div>
     </section>
@@ -15,7 +15,6 @@
     <section class="navigasi">
       <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-
           <a
             role="button"
             class="navbar-burger burger"
@@ -32,8 +31,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
           <div class="navbar-start">
-            <router-link class="navbar-item" to="/">Beranda</router-link>
-
+            <router-link class="navbar-item" to="/" >Beranda</router-link>
           </div>
         </div>
       </nav>
@@ -45,14 +43,19 @@ export default {
   data() {
     return {
       showNav: false
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
 .hero-body {
-  padding: 1.5rem;
+  padding: 1.5rem !important;
+}
+.hero-body img {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
 }
 </style>
 

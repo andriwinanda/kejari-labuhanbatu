@@ -21,6 +21,7 @@ $colors: (
     "twitter": ($twitter, $twitter-invert)
 );
 
+
 // Links
 $link: $primary;
 $link-invert: $primary-invert;
@@ -31,7 +32,3 @@ $link-focus-border: $primary;
 @import "~buefy/src/scss/buefy";
 
 // Global CSS
-.hero-body img{
-    width: 100%;
-    padding: 0 1rem;
-}

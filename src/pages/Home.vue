@@ -11,31 +11,24 @@
           <div class="column is-9">
             <h4 class="title">Artikel</h4>
           </div>
-          <div class="column is-3">
-            <b-field horizontal label="Urutkan:" class="control">
-              <b-select placeholder="Urut berdasarkan" expanded>
-                <option value="1">Popularitas</option>
-                <option value="2">Tanggal</option>
-              </b-select>
-            </b-field>
-          </div>
         </div>
 
         <hr style="margin-top: 0;" />
+        <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
         <!-- Album Artikel -->
         <div class="columns is-multiline">
-          <div v-for="(artikel) in berita" :key="artikel.id" class="column is-3">
+          <div v-for="(artikel) in paginatedData" :key="artikel.id" class="column is-3">
             <a @click="artikel_detail(artikel.id)">
               <div class="card album">
                 <div class="card-image">
+                  <figure class="image is-16by9">
+                    <img :src="artikel.image" class />
+                  </figure>
                 </div>
                 <div class="card-content">
-                  <img :src="artikel.image" class="image is-480x480" />
-                  <br/>
                   <div class="media">
                     <div class="media-content">
                       <p class="title is-6 has-text-weight-bold">{{artikel.title}}</p>
-                      <p v-html="(artikel.text).substring(0,200)+'...'"></p>
                     </div>
                   </div>
                 </div>
@@ -48,13 +41,19 @@
         <nav class="level is-mobile">
           <!-- Left side -->
           <div class="level-left">
-            <div class="level-item"></div>
+            <div class="level-item">
+              <p class="has-text-grey">Hal {{pageNumber+1}} dari {{pageCount}}</p>
+            </div>
           </div>
           <!-- Right side -->
           <div class="level-right">
             <div class="level-item buttons">
-              <a class="button" @click.prevent="previous">Previous</a>
-              <a class="button" @click.prevent="next">Next page</a>
+              <button class="button" :disabled="pageNumber === 0" @click.prevent="previous">Previous</button>
+              <button
+                class="button"
+                :disabled="pageNumber >= pageCount -1"
+                @click.prevent="next"
+              >Next page</button>
             </div>
           </div>
         </nav>
@@ -65,15 +64,9 @@
 
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
-
 import "vueperslides/dist/vueperslides.css";
 export default {
   components: {
-    // Carousel,
-    // Slide,
-    // Swiper
-    // swiper,
-    // swiperSlide
     VueperSlides,
     VueperSlide
   },
@@ -91,25 +84,24 @@ export default {
       slides: [
         {
           id: "slide-1",
-          title: 'Slide <b style="font-size: 1.3em;color: yellow">#1</b>',
-          content:
-            'Slide title can be HTML.<br>And so does the slide content, <span style="font-size: 1.2em;color: yellow">why not?</span>',
           img:
-            "http://kejari-labuhanbatu.go.id/wp-content/uploads/ktz/IMG-20180724-WA0035-372z5l41uhxeyyk44n7ife.jpg"
+            "http://kejari-labuhanbatu.go.id/wp-content/uploads/ktz/kantor-kejari-lubuk-basung-baru3-33oeqlq5t132uatp1piw3u.jpg"
         },
         {
           id: "slide-2",
-          title: 'Slide <b style="font-size: 1.3em;color: yellow">#1</b>',
-          content:
-            'Slide title can be HTML.<br>And so does the slide content, <span style="font-size: 1.2em;color: yellow">why not?</span>',
           img:
             "http://kejari-labuhanbatu.go.id/wp-content/uploads/ktz/IMG-20180724-WA0035-372z5l41uhxeyyk44n7ife.jpg"
         }
       ],
-      berita: []
+      berita: [],
+      pageNumber: 0,
+      dataBerita: [],
+      limit: 10,
+      isLoading: false
     };
   },
   mounted() {
+    this.isLoading = true;
     let body = {
       category_id: "",
       language: "",
@@ -123,15 +115,35 @@ export default {
       )
       .then(res => {
         this.berita = res.data.content;
-        console.log(res);
+        this.isLoading = false;
       })
       .catch(err => {
+        this.isLoading = false;
         console.log(err);
       });
   },
   methods: {
     artikel_detail(id) {
       this.$router.push("/berita/" + id);
+    },
+    next() {
+      this.pageNumber++;
+    },
+    previous() {
+      this.pageNumber--;
+    }
+  },
+  computed: {
+    pageCount() {
+      let l = this.berita.length,
+        s = this.limit;
+      let count = Math.round(l / s);
+      return count;
+    },
+    paginatedData() {
+      const start = this.pageNumber * this.limit,
+        end = start + this.limit;
+      return this.berita.slice(start, end);
     }
   }
 };
@@ -140,12 +152,19 @@ export default {
 .VueCarousel-slide img {
   width: 100%;
 }
+.vueperslides__arrow {
+  color: white;
+}
 .bg2 {
   background-color: #f1f1f1;
 }
 .album:hover {
   box-shadow: 2px 8px 8px 0 rgba(34, 36, 38, 0.12),
     0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
+.card-image {
+  padding: 1.5rem;
+  padding-bottom: 0;
 }
 </style>
 

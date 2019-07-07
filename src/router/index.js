@@ -16,7 +16,11 @@ export default new Router({
       path: '/berita/:id',
       name: 'Berita',
       component: Berita
-    }
+    },
+    { path: "*", redirect: '/' }
   ],
+  scrollBehavior () {
+    return { x: 0, y: 0 };
+  },
   mode: 'history'
 })
